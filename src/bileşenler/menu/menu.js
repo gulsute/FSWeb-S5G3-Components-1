@@ -37,4 +37,26 @@ let menuElemanlari = [
 
 function menuYapici(menuDizisi) {
   const menu = document.createElement("div");
+  menu.classList.add("menu");
+  menu.classList.add("menu--open");
+
+  const menuList = document.createElement("ul");
+
+  menuDizisi.forEach((baslik) => {
+    const menuElemani = document.createElement("li");
+    menuElemani.textContent = baslik;
+    menuList.appendChild(menuElemani);
+  });
+  menu.appendChild(menuList);
+  document.querySelector(".header").appendChild(menu);
+
+  return menu;
 }
+
+const dynamicMenu = menuYapici(menuElemanlari);
+
+const menuButton = document.querySelector(".menu-button");
+
+menuButton.addEventListener("click", () => {
+  dynamicMenu.classList.toggle("menu--open");
+});
