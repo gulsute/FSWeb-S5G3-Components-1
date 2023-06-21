@@ -115,3 +115,50 @@ const data = [
   Adım 5: Veri dizisine yeni haber nesnesi eklemeyi deneyin. Diğer verilerle aynı yapıda olmasına dikkat edin.
   Eklediğiniz yeni haberi görmek için sayfayı yenileyin.
 */
+
+function haberYapici(haberObj) {
+  const article = document.createElement("div");
+  article.classList.add("article");
+
+  const haberBasligi = document.createElement("h2");
+  haberBasligi.classList.add("haberBasligi");
+  haberBasligi.textContent = haberObj.baslik;
+
+  const tarih = document.createElement("p");
+  tarih.classList.add("tarih");
+  tarih.textContent = haberObj.tarih;
+
+  const haberYazi = document.createElement("div");
+  haberYazi.classList.add("haberYazi");
+
+  const p1 = document.createElement("p");
+  p1.classList.add("p1");
+  p1.textContent = haberObj.ilkParagraf;
+
+  const p2 = document.createElement("p");
+  p2.classList.add("p2");
+  p2.textContent = haberObj.ikinciParagraf;
+
+  const p3 = document.createElement("p");
+  p3.classList.add("p3");
+  p3.textContent = haberObj.ucuncuParagraf;
+
+  const expandButton = document.createElement("button");
+  expandButton.classList.add("expandButton");
+  expandButton.textContent = "+";
+
+  article.appendChild(expandButton);
+  article.appendChild(haberBasligi);
+  article.appendChild(tarih);
+  article.append(p1, p2, p3);
+
+  expandButton.addEventListener("click", () =>
+    article.classList.toggle("article-open")
+  );
+
+  document.querySelector(".articles").appendChild(article);
+
+  return article;
+}
+
+data.map(haberYapici);
